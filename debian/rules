@@ -1,4 +1,18 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/pkg-info.mk
+export DEB_VERSION
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+CONFIGURE_OPTIONS = -DBUILD_SHARED_LIBS=on
+
+ifneq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+CONFIGURE_OPTIONS += -DWITH_SEXP_TESTS=off
+endif
+
+override_dh_auto_configure:
+	dh_auto_configure --builddirectory=build -- $(CONFIGURE_OPTIONS)
+
 %:
-	dh $@
+	dh $@ --builddirectory=build

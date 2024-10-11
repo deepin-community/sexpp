@@ -1,0 +1,5 @@
+# C++ symbols vary between different architectures in ways that make
+# it challenging to maintain a reasonable symbols file across the
+# various platforms supported by Debian.  See
+# https://www.eyrie.org/~eagle/journal/2012-02/001.html
+libsexpp0:  no-symbols-control-file usr/lib/*/libsexpp.so.0.*

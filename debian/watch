@@ -1,0 +1,6 @@
+version=4
+# This rewrite is necessary because rnp now uses submodules upstream.
+# Thus, we need to fetch the upstream "release", not just the tag.
+# The rewrite was suggested by David Steele in https://bugs.debian.org/1019696#30 :
+https://github.com/rnpgp/sexpp/tags/ \
+   (?:.*?/)?v(\d[\d.]*)\.tar\.gz
